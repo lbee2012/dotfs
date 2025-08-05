@@ -1,3 +1,7 @@
+# archlinux dotfiles
+- just 4 months ago, my grammar was terrible like the below description =), my literacy of these paragraph is too long, so don't read - td;dr
+##### August - 5. 2025
+
 # description for this 'dots'
 ---
 I am at ***12th grade - 17 years old***. wanna make this repo in order to capture some nice moments when I am exploring this crazy OS.

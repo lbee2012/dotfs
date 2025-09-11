@@ -1,6 +1,8 @@
 # archlinux dotfiles
-- just 4 months ago, my grammar was terrible like the below description =), my literacy of these paragraph is too long, so don't read - td;dr
+- just 4 months ago, my literacy n grammar.....  don't read them. i left those memorable lines behind :( - tl;dr
 ##### August - 5. 2025
+
+```
 
 # description for this 'dots'
 ---
@@ -13,36 +15,5 @@ Secondary, I right pick **Arch Linux**. btw. I love **Arch** so much. Init came 
 This is my first (*absolutely trolled*) commitment for the change logs. I also created a *change logs txt* in order to update my perspectives about this OS onto it. I might write (yap) a lot to improve my writing skill lol. However. btw. Welcome to my '***dotees***'
 
 Initializing Linux-ing. *Long Hoang*. since ***2025.04.21***.
-### systemd bases
----
 
-| distrobution        | archlinux                            |
-| ------------------- | ------------------------------------ |
-| .                   |                                      |
-| AUR                 | paru (arch)                          |
-| desktop environment | i3-wm                                |
-| windows manager     | x11                                  |
-| shell               | fish                                 |
-| terminal            | kitty                                |
-| file manager        | nnn (not that, the file manager one) |
-| .                   |                                      |
-| font (general)      | jetbrains mono                       |
-| library (idk)       | npm                                  |
-| text editor         | nvim                                 |
-| compositor          | picom (i3)                           |
-| wallpaper           | feh                                  |
-| theme               | rose-pine-moon-gtk                   |
-| screen capture      | flameshot                            |
-| application menu    | dmenu (temporary)                    |
-
-
-
-### applications
----
-
-| purpose                  | supply             | details                              |
-| ------------------------ | ------------------ | ------------------------------------ |
-| web browser (mainly use) | microsoft-edge-dev | everything (except for taking notes) |
-| note taking              | obsidian           | taking notes                         |
-| browser (sparely)        | google-chrome-dev  | for fun, cloud-ing e-mail accounts   |
-| im not sure... anyother? |                    |                                      |
+```

@@ -4,7 +4,7 @@
 set $mod Mod1
 
 #System font: Windows' title, Status bar, ... (Not Terminal font)
-font pango:Jetbrains Mono 12
+font pango:Jetbrains Mono 14
 
 #i3-wm fr
 #https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -12,8 +12,40 @@ exec --no-startup-id dex --autostart --environment i3
 
 #i3status
 bar {
-        status_command i3status -c ~/.config/i3/i3status
+    status_command i3status -c ~/.config/i3/i3status
+
+    position bottom
+    colors {
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $lightgray
+        # workspaces section            
+        #                    border  backgr. text
+        focused_workspace    $lightgray $lightgray $bg
+        inactive_workspace   $darkgray $darkgray $lightgray
+        active_workspace     $darkgray $darkgray $lightgray
+        urgent_workspace     $red $red $bg
+    }
 }
+
+#color schemes
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $lightgray #bdae93
+
+# class                 border|backgr|text|indicator|child_border
+client.focused          $lightgray $lightgray $bg $purple $darkgray
+client.focused_inactive $darkgray $darkgray $lightgray $purple $darkgray
+client.unfocused        $darkgray $darkgray $lightgray $purple $darkgray
+client.urgent           $red $red $white $red $red
 
 #restart i3
 bindsym $mod+Shift+r restart
@@ -24,66 +56,70 @@ bindsym $mod+Ctrl+Shift+x exec pkill i3
 	#picom
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
-  #keyboard - fcitx5
+	#keyboard - fcitx5
 exec --no-startup-id fcitx5
-  #keyboard - ibus
-exec --no-startup-id ibus-daemon -drx
-  #screen_capture - flameshot
-bindsym $mod+Shift+s exec --no-startup-id flameshot gui -c -p ~/Pictures
-  #clipboard_manager - clipmenud
+	#screen_capture - flameshot
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui 
+bindsym mod4+Shift+s exec --no-startup-id flameshot gui
+	#clipboard_manager - clipmenud
 exec --no-startup-id clipmenud
 bindsym $mod+v exec clipmenu
+	#hhkb_layout_laptop
+exec --no-startup-id /usr/bin/setxkbmap -option "ctrl:nocaps"
+	
 	#wallpaper - feh
-exec --no-startup-id feh --bg-scale ~/dotees/wallpapers/arch.jpg
+exec --no-startup-id feh --bg-fill /home/SATA/Database/Git/dotees/pics/c.pissarro_1902.jpg 
+#exec --no-startup-id feg --bg-center --randomize ~/dotees/pics/*
 
-  #dmenu
-bindsym $mod+space exec --no-startup-id dmenu_run
-  #rofi
-#bindsym $mod+space exec --no-startup-id rofi -show drun
+	#application_menu - dmenu
+bindsym $mod+space exec dmenu_run -fn "Jetbrains Mono"
 
-  #terminal - kitty
-bindsym $mod+r exec kitty
+	#terminal - kitty
+#bindsym $mod+r exec kitty
 bindsym mod4+r exec kitty
-  #file_manager - nnn
-bindsym $mod+e exec kitty -e nnn
-bindsym mod4+e exec kitty -e nnn
+	#file_manager - yazi
+#bindsym $mod+e exec kitty -e yazi
+bindsym mod4+e exec kitty -e yazi
 	#super_shortcuts
-bindsym mod4+1 exec microsoft-edge-dev
-bindsym mod4+2 exec kitty -e nnn
+bindsym mod4+1 exec kitty -e yazi
+bindsym mod4+2 exec firefox-developer-edition
 bindsym mod4+3 exec obsidian
-  #kill_instance
-bindsym $mod+Shift+q kill
+	#kill_instance
+bindsym $mod+q kill
 
-  #edge-dev
-exec --no-startup-id microsoft-edge-dev
-assign [class="microsoft-edge-dev"] $ws1
-  #obsidian
+	#shell_startup_at_boot
+  #browser
+exec --no-startup-id firefox-developer-edition
+assign [class="firefox-developer-edition"] $ws1
+
+  #code-editor
+#exec --no-startup-id code-insiders
+#assign [class="code-insiders"] $ws2
+
+  #note-taking
 exec --no-startup-id obsidian
 assign [class="obsidian"] $ws3
 
 
 
 #SYSTEMD
-	#idk 
+	#lock_screen
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-	#NetworkManager ; nm-applet
-exec --no-startup-id nm-applet
+	#specific_screen - xrandr
+bindsym $mod+h exec xrandr --output HDMI-1-0 --auto --rotate inverted --output eDP-1 --off
+bindsym $mod+l exec xrandr --output eDP-1 --auto --output HDMI-1-0 --off
 
-	#specific_screen
-exec --no-startup-id xrandr --output eDP-1 --scale 1.25x1.25
-bindsym $mod+Ctrl+Shift+Down exec xrandr --output eDP-1 --rotate inverted
-bindsym $mod+Ctrl+Shift+Up exec xrandr --output eDP-1 --rotate normal
-  #outer_margins (around_edges)
-#gaps outer 3
+#outer_margins (around_edges)
+gaps outer 1
   #inner_paddings (between_windows)
-gaps inner -3
-  #Ergomic M757s
-exec_always --no-startup-id xinput --set-prop 11 "libinput Accel Speed" -0.69
+gaps inner 3
+  #Ergomic M757s - xinput
+#exec --no-startup-id xinput --set-prop 11 "libinput Accel Speed" -0.69
 
-  #brightness (brightnessctl)
+  #brightness - brightnessctl
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
-  #audio (PulseAudio)
+  #audio - PulseAudio
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
@@ -92,7 +128,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
   #fullscreen
 bindsym $mod+f fullscreen toggle
-  #splittiling / floating
+  #splitting / floating
 bindsym $mod+Shift+space floating toggle
 
   # Use Mouse+$mod to drag floating windows to their wanted position
@@ -101,30 +137,24 @@ bindsym $mod+Shift+space floating toggle
   # or left-clicking anywhere into the window while holding the floating modifier.
 #tiling_drag modifier titlebar
 
-  #windows_layout (stacked | tabbed | toggle split)
-bindsym $mod+w layout tabbed
-bindsym $mod+q layout toggle 
-  #tabbed mode at boot
+  #windows_layout (stacked | tabbed | toggle | splith | splitv)
+bindsym $mod+d layout toggle tabbed splith splitv
+  #layout mode at boot
 workspace_layout tabbed
 
-  #windows_spliting
-  	#horizontal
-#bindsym $mod+h split h
-  	#vertical
-#bindsym $mod+v split v
-
   #change_focusing (alt+tab)
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-  #reposition_focused_window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Ctrl+Left focus left
+bindsym $mod+Ctrl+Down focus down
+bindsym $mod+Ctrl+Up focus up
+bindsym $mod+Ctrl+Right focus right
 
-  #for_workspace_dividation
+  #reposition_focused_window
+#bindsym $mod+Shift+Left move left
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
+
+  #workspaces_definition
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -135,7 +165,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "0"
-  #switching_workspace
+  #workspaces_switching
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -158,4 +188,15 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}

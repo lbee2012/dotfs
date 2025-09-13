@@ -59,6 +59,7 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
 	#keyboard - fcitx5
 exec --no-startup-id fcitx5
+#exec --no-startup-id ibus-daemon -rxRd
 	#screen_capture - flameshot
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui 
 bindsym mod4+Shift+s exec --no-startup-id flameshot gui
@@ -69,7 +70,7 @@ bindsym $mod+v exec clipmenu
 exec --no-startup-id /usr/bin/setxkbmap -option "ctrl:nocaps"
 	
 	#wallpaper - feh
-exec --no-startup-id feh --bg-fill /home/eric/dotfs/pics/c.pissarro_1902.jpg
+exec --no-startup-id feh --bg-fill /home/sata/Database/Git/dotfs/pics/c.pissarro_1902.jpg
 
   #application_menu - dmenu
 bindsym $mod+space exec dmenu_run -fn "Jetbrains Mono-14"

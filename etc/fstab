@@ -1,2 +1,6 @@
+#remember to turn off fast-boot (windows dual booting)
 # /dev/sda1 //SATA
-UUID=01DC11AA64E5DA50	/home/SATA	ntfs	defaults	0 2	
+UUID=01DC11AA64E5DA50	/home/sata	ntfs	defaults	0 2	
+
+# /dev/sdb1 //USB
+UUID=01DC18C81D301B10 /home/usb   ntfs  defaults  0 2

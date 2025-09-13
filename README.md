@@ -1,4 +1,8 @@
-# archlinux dotfiles
+# arch dots
+
+- hello there! lbee's here. i cannot getout of shallowing config :(, past week, i just letting my time goes on reinstallations and reconfigurations (rice rice rice)
+##### Sep 13. 25
+
 - just 4 months ago, my literacy n grammar.....  don't read them. i left those memorable lines behind :( - tl;dr
 ##### August - 5. 2025
 

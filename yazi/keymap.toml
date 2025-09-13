@@ -8,3 +8,6 @@ desc = "Open $SHELL here"
 on   = "<Esc>"
 run  = "close"
 desc = "Cancel input"
+
+[[comment]]
+comment = "i'd touch this guy lateron" 

@@ -8,8 +8,9 @@ eveklyna."
 
 alias i3='startx'
 
-alias git.dotfs='cd /home/sata/Database/Git/dotfs'
-alias git.archy='cd /home/sata/Database/Git/archy'
+alias git.dotfs='cd /home/sata/Git/dotfs'
+alias git.erichy='cd /home/sata/Git/erichy'
+alias git.notes='cd /home/sata/Git/notes'
 
 #fcitx5
 #set -x GTK_IM_MODULE fcitx

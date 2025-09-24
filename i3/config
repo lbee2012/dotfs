@@ -70,7 +70,7 @@ bindsym $mod+v exec clipmenu
 exec --no-startup-id /usr/bin/setxkbmap -option "ctrl:nocaps"
 	
 	#wallpaper - feh
-exec --no-startup-id feh --bg-fill /home/sata/Database/Git/dotfs/pics/c.pissarro_1902.jpg
+exec --no-startup-id feh --bg-fill /home/sata/Git/dotfs/pics/c.pissarro_1902.jpg
 
   #application_menu - dmenu
 bindsym $mod+space exec dmenu_run -fn "Jetbrains Mono-14"
@@ -85,6 +85,9 @@ bindsym mod4+e exec kitty -e yazi
 bindsym mod4+1 exec kitty -e yazi
 bindsym mod4+2 exec firefox-developer-edition
 bindsym mod4+3 exec obsidian
+bindsym mod4+4 exec kitty
+bindsym mod4+5 exec code-insiders
+
 	#kill_instance
 bindsym $mod+q kill
 
@@ -92,12 +95,7 @@ bindsym $mod+q kill
   #browser
 exec --no-startup-id firefox-developer-edition
 assign [class="firefox-developer-edition"] $ws1
-
-  #code-editor
-#exec --no-startup-id code-insiders
-#assign [class="code-insiders"] $ws2
-
-  #note-taking
+  #notes
 exec --no-startup-id obsidian
 assign [class="obsidian"] $ws3
 
@@ -107,7 +105,7 @@ assign [class="obsidian"] $ws3
 	#lock_screen
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 	#specific_screen - xrandr
-bindsym $mod+h exec xrandr --output HDMI-1-0 --auto --rotate inverted --output eDP-1 --off
+bindsym $mod+h exec xrandr --output HDMI-1-0 --rotate inverted --mode 1920x1080 --rate 50 --output eDP-1 --off
 bindsym $mod+l exec xrandr --output eDP-1 --auto --output HDMI-1-0 --off
 
 #outer_margins (around_edges)

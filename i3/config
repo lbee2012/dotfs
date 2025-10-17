@@ -1,4 +1,3 @@
-
 #Wiki for a complete reference! : https://i3wm.org/docs/userguide.html
 
 set $mod Mod1
@@ -199,3 +198,4 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+

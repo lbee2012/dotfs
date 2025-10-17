@@ -4,7 +4,7 @@
 set $mod Mod1
 
 #System font: Windows' title, Status bar, ... (Not Terminal font)
-font pango:Jetbrains Mono 14
+font pango:JetBrains Mono 14
 
 #i3-wm fr
 #https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -70,7 +70,7 @@ bindsym $mod+v exec clipmenu
 exec --no-startup-id /usr/bin/setxkbmap -option "ctrl:nocaps"
 	
 	#wallpaper - feh
-exec --no-startup-id feh --bg-fill /home/sata/Git/dotfs/pics/c.pissarro_1902.jpg
+exec --no-startup-id feh --bg-fill /home/e/Git/dotfs/pics/c.pissarro_1902.jpg
 
   #application_menu - dmenu
 bindsym $mod+space exec dmenu_run -fn "Jetbrains Mono-14"
@@ -98,15 +98,15 @@ assign [class="firefox-developer-edition"] $ws1
   #notes
 exec --no-startup-id obsidian
 assign [class="obsidian"] $ws3
-
-
+  #communication
+exec --no-startup-id vesktop
+assign [class="vesktop"] $ws1
 
 #SYSTEMD
 	#lock_screen
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 	#specific_screen - xrandr
-bindsym $mod+h exec xrandr --output HDMI-1-0 --rotate inverted --mode 1920x1080 --rate 50 --output eDP-1 --off
-bindsym $mod+l exec xrandr --output eDP-1 --auto --output HDMI-1-0 --off
+exec --no-startup-id xrandr --output HDMI-1 --mode 1920x1080 --rate 50 --rotate inverted
 
 #outer_margins (around_edges)
 gaps outer 1

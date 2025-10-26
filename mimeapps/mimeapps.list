@@ -13,6 +13,7 @@ application/x-extension-xht=firefox-developer-edition.desktop
 application/pdf=firefox-developer-edition.desktop
 
 inode/directory=yazi.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox-developer-edition.desktop;

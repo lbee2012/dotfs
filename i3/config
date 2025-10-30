@@ -42,7 +42,7 @@ set $gray #a89984
 set $darkgray #1d2021
 set $lightgray #bdae93
 
-# class                 border|backgr|text|indicator|child_border
+#class                 border|backgr|text|indicator|child_border
 client.focused          $lightgray $lightgray $bg $purple $darkgray
 client.focused_inactive $darkgray $darkgray $lightgray $purple $darkgray
 client.unfocused        $darkgray $darkgray $lightgray $purple $darkgray
@@ -61,11 +61,12 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id fcitx5
 #exec --no-startup-id ibus-daemon -rxRd
 	#screen_capture - flameshot
-bindsym $mod+Shift+s exec --no-startup-id flameshot gui 
-bindsym mod4+Shift+s exec --no-startup-id flameshot gui
+bindsym $mod+Shift+s exec flameshot gui 
+bindsym mod4+Shift+s exec flameshot gui
 	#clipboard_manager - clipmenud
 exec --no-startup-id clipmenud
 bindsym $mod+v exec clipmenu
+bindsym mod4+v exec clipmenu
 	#hhkb_layout_laptop
 exec --no-startup-id /usr/bin/setxkbmap -option "ctrl:nocaps"
 	
@@ -117,7 +118,7 @@ gaps outer 1
 gaps inner 3
   #Ergomic M757s - xinput
 #exec --no-startup-id xinput --set-prop 11 "libinput Accel Speed" -0.69
-exec --no-startup-id xinput set-prop 16 "libinput Accel Speed" -0.4
+exec --no-startup-id xinput set-prop 16 "libinput Accel Speed" -0.1
 
   #brightness - brightnessctl
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%

@@ -3,12 +3,13 @@
 
 set $mod Mod1
 
-#System font: Windows' title, Status bar, ... (Not Terminal font)
+#System font: Windows' title, Status bar, ... (Not the Terminal font)
 font pango:Noto Sans Mono 12
 
 # I3-WM FR
 #https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id dbus-update-activation-environment --systemd GTK_USE_PORTAL XDG_CURRENT_DESKTOP
 
 #i3status
 bar {
@@ -29,17 +30,17 @@ set $study Anki
 
 assign [class=$browser] $ws1
 assign [class=$notes] $ws3
-assign [class=$study] $ws2
+assign [class=$study] $ws3
 
 #input_method - ime
 exec --no-startup-id fcitx5
 #screen_capture - 
-bindsym $mod+Shift+s exec xfce4-screenshooter -rcs ~/Pictures/screenshots/
+bindsym $mod+Shift+s exec xfce4-screenshooter -fc
 #clipboard_manager - clipman
 exec --no-startup-id xfce4-clipman
 bindsym $mod+v exec xfce4-clipman-history
 #wallpaper - feh
-exec_always --no-startup-id feh --bg-fill ~/git/dots/pics/fam/2010_ong_chau_minh.jpg
+exec_always --no-startup-id feh --bg-fill ~/git/dots/pics/fam/2008-grandfas.jpg
 #application_menu - dmenu
 bindsym $mod+space exec dmenu_run -fn "Noto Sans Mono-12"
 
@@ -61,9 +62,6 @@ exec_always --no-startup-id xset r rate 250 25
 #terminal
 bindsym $mod+Return exec $term
 
-#file_manager - yazi
-bindsym $mod+e exec $term -e $files
-
 #screen_orientations - xrandr
 bindsym $mod+Ctrl+Shift+Left exec xrandr -o 1
 bindsym $mod+Ctrl+Shift+Down exec xrandr -o 2
@@ -75,26 +73,15 @@ gaps outer 1
 #inner_paddings
 gaps inner 3
 
-#brightness - brightnessctl
-bindsym XF86MonBrightnessUp exec brightnessctl set +10%
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
-#audio - pulseaudio
+#audio - pipewire
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-#same_but_another_way
-bindsym $mod+Down exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym $mod+Up exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-#bindsym $mod+Right exec brightnessctl set +10%
-#bindsym $mod+Left exec brightnessctl set 10%-
+bindsym $mod+a exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym $mod+s exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym $mod+d exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 
-#windows_layout (stacked | tabbed | toggle | splith | splitv)
-bindsym $mod+d layout toggle tabbed splith splitv
-bindsym $mod+f fullscreen toggle
 #layout mode at boot
 workspace_layout tabbed
+bindsym $mod+f fullscreen toggle
 
 #change_focusing (alt+tab)
 bindsym $mod+h focus left
@@ -112,34 +99,16 @@ set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "0"
 #workspaces_switching
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
 #transposition_window_to_workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
 
 #resize_window
 bindsym $mod+Ctrl+Shift+r mode "resize"
@@ -153,3 +122,4 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+

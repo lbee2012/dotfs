@@ -14,5 +14,3 @@ alias i3='startx'
 alias ls='ls -lah --color --group-directories-first'
 alias vim='nvim'
 
-export EDITOR="/usr/bin/nvim"
-export VISUAL="$EDITOR"
